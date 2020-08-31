@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+    name: jenkins-discovery
+    namespace: jenkinsgcp
+spec:
+    selector:
+        app: master
+    ports:
+        - protocol: TCP
+          port: 5000
+          targetPort: 50000
+          name: slaves
