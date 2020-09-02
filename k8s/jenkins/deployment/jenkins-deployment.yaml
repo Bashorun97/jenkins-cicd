@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: jenkins
-  namespace :jenkinsgcp
+  namespace: jenkinsgcp
 spec:
   replicas: 1
   template:
@@ -15,7 +15,7 @@ spec:
           image: jenkins/jenkins:tls
           ports:
           - containerPort: 8080
-          - containerPort; 50000
+          - containerPort: 50000
           readinessProbe:
             httpGet:
               path: /login
@@ -30,21 +30,18 @@ spec:
               secretKeyRef:
                 name: jenkins
                 key: options
-            - name: JAVA_OPTS
-              value: '-Xmx1400m'
-            volumeMounts:
-            - mountPath: /var/jenkins_home
-              name: jenkins-home
-            resources:
-              limits:
-                cpu: 500m
-                memory: 1500Mi
-            requests:
+          - name: JAVA_OPTS
+            value: '-Xmx1400m'
+          volumeMounts:
+          - mountPath: /var/jenkins_home
+            name: jenkins-home
+          resources:
+            limits:
               cpu: 500m
               memory: 1500Mi
-            volumes:
-            - name: jenkins-home
-              gcePersistentDisk:
-                pdName: jenkins-home
-                fsType: ext4
-                partition: 1
+          volumes:
+          - name: jenkins-home
+            gcePersistentDisk:
+              pdName: jenkins-home
+              fsType: ext4
+              partition: 1
