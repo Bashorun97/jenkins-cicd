@@ -39,9 +39,9 @@ spec:
             limits:
               cpu: 500m
               memory: 1500Mi
-          volumes:
-          - name: jenkins-home
-            gcePersistentDisk:
-              pdName: jenkins-home
-              fsType: ext4
-              partition: 1
+      volumes:
+      - name: jenkins-home
+        gcePersistentDisk:
+          pdName: jenkins-home
+          fsType: ext4
+          partition: 1
