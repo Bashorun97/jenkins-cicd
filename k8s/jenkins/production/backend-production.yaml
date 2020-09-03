@@ -3,6 +3,11 @@ apiVersion: apps/v1
 metadata:
   name: practical-gcp-backend-production
 spec:
+  selector:
+      matchLabels:
+          app: gceme
+          role: backend
+          env: production
   replicas: 1
   template:
     metadata:
