@@ -1,6 +1,6 @@
 kind: Deployment
 apiVersion: apps/v1
-metatdata:
+metadata:
   name: practical-gcp-frontend-production
 spec:
   selector:
@@ -25,7 +25,7 @@ spec:
             memory: "500Mi"
             cpu: "100m"
         imagePullPolicy: Always
-        readinesProbe:
+        readinessProbe:
           httpGet:
             path: /healthz
             port: 80
