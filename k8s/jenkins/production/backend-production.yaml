@@ -1,5 +1,5 @@
 kind: Deployment
-apiVersion: extensions/v1beta
+apiVersion: apps/v1
 metadata:
   name: practical-gcp-backend-production
 spec:
